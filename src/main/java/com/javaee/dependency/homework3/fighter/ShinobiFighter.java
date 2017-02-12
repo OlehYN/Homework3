@@ -2,6 +2,9 @@ package com.javaee.dependency.homework3.fighter;
 
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import com.javaee.dependency.homework3.weapon.Weapon;
 
 public class ShinobiFighter implements Fighter {
@@ -12,14 +15,16 @@ public class ShinobiFighter implements Fighter {
 	public static final double CRITICAL = 0.75;
 	public static final double DEVIATION = 0.5;
 
+	@Autowired
+	@Qualifier("woodSword")
 	private Weapon weapon;
+
 	private String excuse;
 	private String celebration;
 
 	private Random random;
 
-	public ShinobiFighter(Weapon weapon, String excuse, String celebration) {
-		this.weapon = weapon;
+	public ShinobiFighter(String excuse, String celebration) {
 		this.excuse = excuse;
 		this.celebration = celebration;
 

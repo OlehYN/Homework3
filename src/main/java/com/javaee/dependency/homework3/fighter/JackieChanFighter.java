@@ -2,6 +2,8 @@ package com.javaee.dependency.homework3.fighter;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.javaee.dependency.homework3.weapon.Weapon;
 
 public class JackieChanFighter implements Fighter{
@@ -12,8 +14,8 @@ public class JackieChanFighter implements Fighter{
 	
 	public static final double JACKIE_SKILL = 5;
 	
-	public JackieChanFighter(List<Weapon> weapons, String celebration, String excuse){
-		this.weapons = weapons;
+	@Autowired
+	public JackieChanFighter(String celebration, String excuse){
 		this.celebration = celebration;
 		this.excuse = excuse;
 	}
@@ -42,6 +44,16 @@ public class JackieChanFighter implements Fighter{
 
 	public void tellExcuse() {
 		System.out.println(excuse);
+	}
+	
+	
+	public List<Weapon> getWeapons() {
+		return weapons;
+	}
+
+	@Autowired
+	public void setWeapons(List<Weapon> weapons) {
+		this.weapons = weapons;
 	}
 
 }
