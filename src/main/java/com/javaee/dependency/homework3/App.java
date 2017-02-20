@@ -13,7 +13,7 @@ public class App {
 		
 		System.out.println("Shinobi");
 		System.out.println("Atack: " + naruto.attack());
-		System.out.println("Defense against 12: " + naruto.defend(12));
+		System.out.println("Defense against 12: " + naruto.defend(12D));
 		System.out.print("Excuses: ");
 		naruto.tellExcuse();
 		
@@ -27,7 +27,7 @@ public class App {
 		
 		System.out.println("Gopnic");
 		System.out.println("Atack: " + gopnic.attack());
-		System.out.println("Defense against 12: " + gopnic.defend(12));
+		System.out.println("Defense against 12: " + gopnic.defend(12D));
 		System.out.print("Excuses: ");
 		gopnic.tellExcuse();
 		
@@ -41,7 +41,7 @@ public class App {
 		
 		System.out.println("Jackie Chan");
 		System.out.println("Atack: " + jackieChan.attack());
-		System.out.println("Defense against 12: " + jackieChan.defend(12));
+		System.out.println("Defense against 12: " + jackieChan.defend(12D));
 		System.out.print("Excuses: ");
 		jackieChan.tellExcuse();
 		

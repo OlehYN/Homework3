@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<aop:aspectj-autoproxy />
+
+	<bean id="fanAspect" class="com.javaee.dependency.homework3.aspect.Fan" />
+
+	<aop:config>
+
+		<aop:aspect id="aspectCongratulations" ref="fanAspect">
+
+			<aop:pointcut id="pointCutAfterReturning"
+				expression="execution(* com.javaee.dependency.homework3.fighter.Fighter.celebrateVictory(..))" />
+			<aop:after-returning method="congratulations"
+				pointcut-ref="pointCutAfterReturning" />
+
+		</aop:aspect>
+
+	</aop:config>
+
+	<bean id="dartVaderAspect" class="com.javaee.dependency.homework3.aspect.DarthVader" />
+	<bean id="somebodyAspect" class="com.javaee.dependency.homework3.aspect.Somebody" />
 
 	<bean id="woodSword" class="com.javaee.dependency.homework3.weapon.Sword">
 		<constructor-arg value="0.1" />
@@ -25,32 +46,30 @@
 	</bean>
 
 	<bean id="chair" class="com.javaee.dependency.homework3.weapon.Furniture">
+		<constructor-arg value="chair" />
 		<constructor-arg value="0.7" />
 		<constructor-arg value="0.4" />
 	</bean>
 
 	<bean id="table" class="com.javaee.dependency.homework3.weapon.Furniture">
+		<constructor-arg value="table" />
 		<constructor-arg value="0.9" />
 		<constructor-arg value="0.6" />
 	</bean>
 
 	<bean id="bed" class="com.javaee.dependency.homework3.weapon.Furniture">
+		<constructor-arg value="bed" />
 		<constructor-arg value="1.9" />
 		<constructor-arg value="1.6" />
 	</bean>
 
-	<util:list id="myList" value-type="com.javaee.dependency.homework3.weapon.Sword">
-		<ref bean="chair"></ref>
-		<ref bean="table"></ref>
-		<ref bean="bed"></ref>
-	</util:list>
-	
 	<bean id="excuse" class="java.lang.String">
-  		<constructor-arg type="java.lang.String" value="Всі меблі поламав... Знову..."/>
+		<constructor-arg type="java.lang.String" value="Всі меблі поламав... Знову..." />
 	</bean>
-	
+
 	<bean id="celebration" class="java.lang.String">
-  		<constructor-arg type="java.lang.String" value="Надіюся, що страховка покриє витрати на меблі..."/>
+		<constructor-arg type="java.lang.String"
+			value="Надіюся, що страховка покриє витрати на меблі..." />
 	</bean>
 
 	<bean id="jackieChan"

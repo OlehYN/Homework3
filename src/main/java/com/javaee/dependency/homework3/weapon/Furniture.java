@@ -6,10 +6,12 @@ public class Furniture implements Weapon {
 
 	private double damage;
 	private double defense;
+	private String name;
 
-	public Furniture(double damage, double defense) {
+	public Furniture(String name, double damage, double defense) {
 		this.damage = damage;
 		this.defense = defense;
+		this.setName(name);
 	}
 
 	public double damage() {
@@ -28,6 +30,19 @@ public class Furniture implements Weapon {
 		}
 
 		return 0;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Furniture [used=" + used + ", damage=" + damage + ", defense=" + defense + ", name=" + name + "]";
 	}
 
 }
